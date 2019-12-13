@@ -1,0 +1,16 @@
+---
+version: '3.5'
+services:
+  apt-cacher-ng:
+    build:
+      context: .
+      args:
+        APT_HTTP_PROXY: ${APT_HTTP_PROXY:-DIRECT}
+    ports:
+      - "3142:3142"
+    volumes:
+      - "apt-cacher-ng:/var/cache/apt-cacher-ng"
+    restart: unless-stopped
+
+volumes:
+  apt-cacher-ng:

@@ -30,7 +30,7 @@ RUN curl -sSL http://www.centos.org/download/full-mirrorlist.csv | sed 's/^.*"ht
 RUN echo "PassThroughPattern: .*" >> /etc/apt-cacher-ng/acng.conf
 #add custom backends
 COPY backends/backends_docker-ce /etc/apt-cacher-ng/
-RUN echo "Remap-docker: http://fakerepo.benjaminvoigt.info ; file:backends_docker-ce" >> /etc/apt-cacher-ng/acng.conf
+RUN echo "Remap-docker: http://docker-ce.repo ; file:backends_docker-ce" >> /etc/apt-cacher-ng/acng.conf
 
 EXPOSE 3142
 HEALTHCHECK CMD nc -vz localhost 3142
